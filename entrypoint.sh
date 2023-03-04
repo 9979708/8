@@ -237,7 +237,7 @@ argo_type() {
 }
 
 export_list() {
-  VMESS="{ \"v\": \"2\", \"ps\": \"Rd-${RENDER_EXTERNAL_URL:8:7}-Vm-$v4l$v4\", \"add\": \"[2606:4700:4700::1001]\", \"port\": \"443\", \"id\": \"${UUID}\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\${ARGO_DOMAIN}\", \"path\": \"${WP}%3Fed%3D2048\", \"tls\": \"tls\", \"sni\": \"\${ARGO_DOMAIN}\", \"alpn\": \"\" }"
+  VMESS="{ \"v\": \"2\", \"ps\": \"Rd-${NAME8%.onrender.com}-Vm-$v4l$v4\", \"add\": \"[2606:4700:4700::1001]\", \"port\": \"443\", \"id\": \"${UUID}\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\${ARGO_DOMAIN}\", \"path\": \"${WP}?ed=2048\", \"tls\": \"tls\", \"sni\": \"\${ARGO_DOMAIN}\", \"alpn\": \"\" }"
 
   cat > list << EOF
 *******************************************
