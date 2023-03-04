@@ -1,4 +1,4 @@
-8const username = process.env.WU || "admin";
+const username = process.env.WU || "admin";
 const password = process.env.WPD || "password";
 const url = process.env.RENDER_EXTERNAL_URL;
 const port = process.env.PORT || 3000;
