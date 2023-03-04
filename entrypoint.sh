@@ -3,6 +3,7 @@
 # 设置各变量
 WP=${WP:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
+NAME8="${RENDER_EXTERNAL_URL:8}" |cut -f1 -d"."
 
 generate_config() {
   cat > config.json << EOF
@@ -269,7 +270,7 @@ Clash:
 ----------------------------
 - {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
 ----------------------------
-- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
+- {name: Rd-$NAME8-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
 *******************************************
 EOF
   cat list
@@ -356,7 +357,6 @@ module.exports = {
 EOF
   fi
 }
-#name8='${RENDER_EXTERNAL_URL:8}|cut -f1 -d"."'
 UA_Browser="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
 v4=$(curl -s4m6 ip.sb -k)
 v4l=`curl -sm6 --user-agent "${UA_Browser}" http://ip-api.com/json/$v4?lang=zh-CN -k | cut -f2 -d"," | cut -f4 -d '"'`
