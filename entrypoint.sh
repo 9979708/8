@@ -236,24 +236,24 @@ argo_type() {
 }
 
 export_list() {
-  VMESS="{ \"v\": \"2\", \"ps\": \"Rd-$name-Vm-$v4l$v4\", \"add\": \"[2606:4700:4700::1001]\", \"port\": \"443\", \"id\": \"${UUID}\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\${ARGO_DOMAIN}\", \"path\": \"${WP}%3Fed%3D2048\", \"tls\": \"tls\", \"sni\": \"\${ARGO_DOMAIN}\", \"alpn\": \"\" }"
+  VMESS="{ \"v\": \"2\", \"ps\": \"Rd-${name}-Vm-$v4l$v4\", \"add\": \"[2606:4700:4700::1001]\", \"port\": \"443\", \"id\": \"${UUID}\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\${ARGO_DOMAIN}\", \"path\": \"${WP}%3Fed%3D2048\", \"tls\": \"tls\", \"sni\": \"\${ARGO_DOMAIN}\", \"alpn\": \"\" }"
 
   cat > list << EOF
 *******************************************
 V2-rayN:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-$name-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${name}-Vl-$v4l$v4
 ----------------------------
 vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
-trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-$name-Tj-$v4l$v4
+trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-${name}-Tj-$v4l$v4
 ----------------------------
-ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#Rd-$name-Ss-$v4l$v4
+ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#Rd-${name}-Ss-$v4l$v4
 由于该软件导出的链接不全，请自行处理如下: 传输协议: WS ， 伪装域名: \${ARGO_DOMAIN} ，路径: ${WP}s%3Fed%3D2048 ， 传输层安全: tls ， sni: \${ARGO_DOMAIN}
 *******************************************
 小火箭:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048&sni=\${ARGO_DOMAIN}#Rd-$name-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048&sni=\${ARGO_DOMAIN}#Rd-${name}-Vl-$v4l$v4
 ----------------------------
 vmess://$(echo "none:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?remarks=Rd-${name}-Vm-$v4l$v4&obfsParam=\${ARGO_DOMAIN}&path=${WP}%3Fed%3D2048&obfs=websocket&tls=1&peer=\${ARGO_DOMAIN}&alterId=0
 ----------------------------
