@@ -242,7 +242,7 @@ export_list() {
 *******************************************
 V2-rayN:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-'"${RENDER_EXTERNAL_URL:8}" | cut -f1 -d"."'-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8 | cut -f1 -d"."}-Vl-$v4l$v4
 ----------------------------
 vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
