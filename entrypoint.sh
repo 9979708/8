@@ -236,40 +236,40 @@ argo_type() {
 }
 
 export_list() {
-  VMESS="{ \"v\": \"2\", \"ps\": \"Rd-${name}-Vm-$v4l$v4\", \"add\": \"[2606:4700:4700::1001]\", \"port\": \"443\", \"id\": \"${UUID}\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\${ARGO_DOMAIN}\", \"path\": \"${WP}%3Fed%3D2048\", \"tls\": \"tls\", \"sni\": \"\${ARGO_DOMAIN}\", \"alpn\": \"\" }"
+  VMESS="{ \"v\": \"2\", \"ps\": \"Rd-${RENDER_EXTERNAL_URL:8:7}-Vm-$v4l$v4\", \"add\": \"[2606:4700:4700::1001]\", \"port\": \"443\", \"id\": \"${UUID}\", \"aid\": \"0\", \"scy\": \"none\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"\${ARGO_DOMAIN}\", \"path\": \"${WP}%3Fed%3D2048\", \"tls\": \"tls\", \"sni\": \"\${ARGO_DOMAIN}\", \"alpn\": \"\" }"
 
   cat > list << EOF
 *******************************************
 V2-rayN:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8 | cut -f1 -d"."}-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Vl-$v4l$v4
 ----------------------------
 vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
-trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-${name}-Tj-$v4l$v4
+trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4
 ----------------------------
-ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#Rd-${name}-Ss-$v4l$v4
+ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#$Rd-{RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4
 由于该软件导出的链接不全，请自行处理如下: 传输协议: WS ， 伪装域名: \${ARGO_DOMAIN} ，路径: ${WP}s%3Fed%3D2048 ， 传输层安全: tls ， sni: \${ARGO_DOMAIN}
 *******************************************
 小火箭:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048&sni=\${ARGO_DOMAIN}#Rd-${name}-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048&sni=\${ARGO_DOMAIN}#Rd-${RENDER_EXTERNAL_URL:8:7}-Vl-$v4l$v4
 ----------------------------
-vmess://$(echo "none:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?remarks=Rd-${name}-Vm-$v4l$v4&obfsParam=\${ARGO_DOMAIN}&path=${WP}%3Fed%3D2048&obfs=websocket&tls=1&peer=\${ARGO_DOMAIN}&alterId=0
+vmess://$(echo "none:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?remarks=Rd-${RENDER_EXTERNAL_URL:8:7}-Vm-$v4l$v4&obfsParam=\${ARGO_DOMAIN}&path=${WP}%3Fed%3D2048&obfs=websocket&tls=1&peer=\${ARGO_DOMAIN}&alterId=0
 ----------------------------
-trojan://${UUID}@[2606:4700:4700::1001]:443?peer=\${ARGO_DOMAIN}&plugin=obfs-local;obfs=websocket;obfs-host=\${ARGO_DOMAIN};obfs-uri=${WP}j%3Fed%3D2048#Rd-${name}-Tj-$v4l$v4
+trojan://${UUID}@[2606:4700:4700::1001]:443?peer=\${ARGO_DOMAIN}&plugin=obfs-local;obfs=websocket;obfs-host=\${ARGO_DOMAIN};obfs-uri=${WP}j%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4
 ----------------------------
-ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?obfs=wss&obfsParam=\${ARGO_DOMAIN}&path=${WP}s%3Fed%3D2048#Rd-${name}-Ss-$v4l$v4
+ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?obfs=wss&obfsParam=\${ARGO_DOMAIN}&path=${WP}s%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4
 *******************************************
 Clash:
 ----------------------------
-- {name: Rd-$name8-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-$name8-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-${name8}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
+- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
 ----------------------------
-- {name: Rd-${name8}-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
+- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
 *******************************************
 EOF
   cat list
@@ -356,7 +356,7 @@ module.exports = {
 EOF
   fi
 }
-name8='${RENDER_EXTERNAL_URL:8}|cut -f1 -d"."'
+#name8='${RENDER_EXTERNAL_URL:8}|cut -f1 -d"."'
 UA_Browser="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
 v4=$(curl -s4m6 ip.sb -k)
 v4l=`curl -sm6 --user-agent "${UA_Browser}" http://ip-api.com/json/$v4?lang=zh-CN -k | cut -f2 -d"," | cut -f4 -d '"'`
