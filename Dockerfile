@@ -1,8 +1,9 @@
 FROM node:latest
 EXPOSE 3000
+ENV TZ=Asia/Shanghai
 WORKDIR /app
 #ADD file.tar.gz /app/
-cp *.* /app/
+COPY *.* /app/
 
 RUN apt-get update &&\
     apt-get install -y iproute2 &&\
