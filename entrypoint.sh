@@ -29,19 +29,19 @@ generate_config() {
                         "dest":3001
                     },
                     {
-                        "path":"/${WP}l",
+                        "path":"${WP}l",
                         "dest":3002
                     },
                     {
-                        "path":"/${WP}",
+                        "path":"${WP}",
                         "dest":3003
                     },
                     {
-                        "path":"/${WP}j",
+                        "path":"${WP}j",
                         "dest":3004
                     },
                     {
-                        "path":"/${WP}s",
+                        "path":"${WP}s",
                         "dest":3005
                     }
                 ]
@@ -84,7 +84,7 @@ generate_config() {
                 "network":"ws",
                 "security":"none",
                 "wsSettings":{
-                    "path":"/${WP}l"
+                    "path":"${WP}l"
                 }
             },
             "sniffing":{
@@ -111,7 +111,7 @@ generate_config() {
             "streamSettings":{
                 "network":"ws",
                 "wsSettings":{
-                    "path":"/${WP}"
+                    "path":"${WP}"
                 }
             },
             "sniffing":{
@@ -138,7 +138,7 @@ generate_config() {
                 "network":"ws",
                 "security":"none",
                 "wsSettings":{
-                    "path":"/${WP}j"
+                    "path":"${WP}j"
                 }
             },
             "sniffing":{
@@ -166,7 +166,7 @@ generate_config() {
             "streamSettings":{
                 "network":"ws",
                 "wsSettings":{
-                    "path":"/${WP}s"
+                    "path":"${WP}s"
                 }
             },
             "sniffing":{
