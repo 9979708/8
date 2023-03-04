@@ -242,7 +242,7 @@ export_list() {
 *******************************************
 V2-rayN:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${name}-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-'${RENDER_EXTERNAL_URL:8} | cut -f1 -d"."'-Vl-$v4l$v4
 ----------------------------
 vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
@@ -263,9 +263,9 @@ ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64
 *******************************************
 Clash:
 ----------------------------
-- {name: Rd-${name}-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-$name-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-${name}-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-$name-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
 - {name: Rd-${name}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
 ----------------------------
