@@ -242,7 +242,7 @@ export_list() {
 *******************************************
 V2-rayN:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-'${RENDER_EXTERNAL_URL:8} | cut -f1 -d"."'-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-'"${RENDER_EXTERNAL_URL:8}" | cut -f1 -d"."'-Vl-$v4l$v4
 ----------------------------
 vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
@@ -263,13 +263,13 @@ ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64
 *******************************************
 Clash:
 ----------------------------
-- {name: Rd-$name-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-$name8-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-$name-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-$name8-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-${name}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
+- {name: Rd-${name8}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
 ----------------------------
-- {name: Rd-${name}-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
+- {name: Rd-${name8}-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
 *******************************************
 EOF
   cat list
@@ -356,7 +356,7 @@ module.exports = {
 EOF
   fi
 }
-name='"${RENDER_EXTERNAL_URL:8}" | cut -f1 -d"."'
+name8='${RENDER_EXTERNAL_URL:8} | cut -f1 -d"."'
 UA_Browser="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
 v4=$(curl -s4m6 ip.sb -k)
 v4l=`curl -sm6 --user-agent "${UA_Browser}" http://ip-api.com/json/$v4?lang=zh-CN -k | cut -f2 -d"," | cut -f4 -d '"'`
