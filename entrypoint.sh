@@ -243,24 +243,24 @@ export_list() {
 *******************************************
 V2-rayN:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048#Rd-${NAME8%.onrender.com}-Vl-$v4l$v4
 ----------------------------
 vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
-trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4
+trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-${NAME8%.onrender.com}-Tj-$v4l$v4
 ----------------------------
-ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#$Rd-${RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4
+ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#$Rd-${NAME8%.onrender.com}-Ss-$v4l$v4
 由于该软件导出的链接不全，请自行处理如下: 传输协议: WS ， 伪装域名: \${ARGO_DOMAIN} ，路径: ${WP}s%3Fed%3D2048 ， 传输层安全: tls ， sni: \${ARGO_DOMAIN}
 *******************************************
 小火箭:
 ----------------------------
-vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048&sni=\${ARGO_DOMAIN}#Rd-${RENDER_EXTERNAL_URL:8:7}-Vl-$v4l$v4
+vless://${UUID}@[2606:4700:4700::1001]:443?encryption=none&security=tls&type=ws&host=\${ARGO_DOMAIN}&path=${WP}l%3Fed%3D2048&sni=\${ARGO_DOMAIN}#Rd-${NAME8%.onrender.com}-Vl-$v4l$v4
 ----------------------------
-vmess://$(echo "none:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?remarks=Rd-${RENDER_EXTERNAL_URL:8:7}-Vm-$v4l$v4&obfsParam=\${ARGO_DOMAIN}&path=${WP}%3Fed%3D2048&obfs=websocket&tls=1&peer=\${ARGO_DOMAIN}&alterId=0
+vmess://$(echo "none:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?remarks=Rd-${NAME8%.onrender.com}-Vm-$v4l$v4&obfsParam=\${ARGO_DOMAIN}&path=${WP}%3Fed%3D2048&obfs=websocket&tls=1&peer=\${ARGO_DOMAIN}&alterId=0
 ----------------------------
-trojan://${UUID}@[2606:4700:4700::1001]:443?peer=\${ARGO_DOMAIN}&plugin=obfs-local;obfs=websocket;obfs-host=\${ARGO_DOMAIN};obfs-uri=${WP}j%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4
+trojan://${UUID}@[2606:4700:4700::1001]:443?peer=\${ARGO_DOMAIN}&plugin=obfs-local;obfs=websocket;obfs-host=\${ARGO_DOMAIN};obfs-uri=${WP}j%3Fed%3D2048#Rd-${NAME8%.onrender.com}-Tj-$v4l$v4
 ----------------------------
-ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?obfs=wss&obfsParam=\${ARGO_DOMAIN}&path=${WP}s%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4
+ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)?obfs=wss&obfsParam=\${ARGO_DOMAIN}&path=${WP}s%3Fed%3D2048#Rd-${NAME8%.onrender.com}-Ss-$v4l$v4
 *******************************************
 Clash:
 ----------------------------
