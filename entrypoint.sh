@@ -248,7 +248,7 @@ vmess://\$(echo \$VMESS | base64 -w0)
 ----------------------------
 trojan://${UUID}@[2606:4700:4700::1001]:443?security=tls&sni=\${ARGO_DOMAIN}&type=ws&host=\${ARGO_DOMAIN}&path=${WP}j%3Fed%3D2048#Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4
 ----------------------------
-ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#$Rd-{RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4
+ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64 -w0)@[2606:4700:4700::1001]:443#$Rd-${RENDER_EXTERNAL_URL:8:7}-Ss-$v4l$v4
 由于该软件导出的链接不全，请自行处理如下: 传输协议: WS ， 伪装域名: \${ARGO_DOMAIN} ，路径: ${WP}s%3Fed%3D2048 ， 传输层安全: tls ， sni: \${ARGO_DOMAIN}
 *******************************************
 小火箭:
