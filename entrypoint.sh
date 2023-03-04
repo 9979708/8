@@ -3,7 +3,7 @@
 # 设置各变量
 WP=${WP:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
-NAME8="${RENDER_EXTERNAL_URL:8}" |cut -f1 -d"."
+NAME8=${RENDER_EXTERNAL_URL%.onrender.com}
 
 generate_config() {
   cat > config.json << EOF
@@ -264,13 +264,13 @@ ss://$(echo "chacha20-ietf-poly1305:${UUID}@[2606:4700:4700::1001]:443" | base64
 *******************************************
 Clash:
 ----------------------------
-- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-${NAME8:8}-Vl-$v4l$v4, type: vless, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, tls: true, servername: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: {path: ${WP}l%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
+- {name: Rd-${NAME8:8}-Vm-$v4l$v4, type: vmess, server: [2606:4700:4700::1001], port: 443, uuid: ${UUID}, alterId: 0, cipher: none, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: ${WP}%3Fed%3D2048, headers: {Host: \${ARGO_DOMAIN}}}, udp: true}
 ----------------------------
-- {name: Rd-${RENDER_EXTERNAL_URL:8:7}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
+- {name: Rd-${NAME8:8}-Tj-$v4l$v4, type: trojan, server: [2606:4700:4700::1001], port: 443, password: ${UUID}, udp: true, tls: true, sni: \${ARGO_DOMAIN}, skip-cert-verify: false, network: ws, ws-opts: { path: ${WP}j%3Fed%3D2048, headers: { Host: \${ARGO_DOMAIN} } } }
 ----------------------------
-- {name: Rd-$NAME8-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
+- {name: Rd-${NAME8:8}-Ss-$v4l$v4, type: ss, server: [2606:4700:4700::1001], port: 443, cipher: chacha20-ietf-poly1305, password: ${UUID}, plugin: v2ray-plugin, plugin-opts: { mode: websocket, host: \${ARGO_DOMAIN}, path: ${WP}s%3Fed%3D2048, tls: true, skip-cert-verify: false, mux: false } }
 *******************************************
 EOF
   cat list
